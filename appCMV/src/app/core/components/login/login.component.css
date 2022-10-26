@@ -1,0 +1,9 @@
+h2{
+    text-align: center;
+    color: white;
+}
+
+:host{
+    width: 80%;
+    display: block;
+}

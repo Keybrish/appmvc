@@ -1,0 +1,76 @@
+SISTEMA DE CONTROL DE MANTENIMIENTO VEHICULAR (cmv)
+
+PS D:\APP Web> ng new appCMV --prefix cmv
+PS D:\APP Web> cd .\appCMV
+PS D:\APP Web\appCMV> ng serve -o --port 4000
+
+NEW TERMINAL --- COMPONENTES
+PS D:\APP Web> cd .\appCMV
+PS D:\APP Web\appCMV> ng g m agencias --routing
+PS D:\APP Web\appCMV> ng g m clientes --routing
+PS D:\APP Web\appCMV> ng g m mecanicos --routing
+PS D:\APP Web\appCMV> ng g m mantenimientos --routing
+PS D:\APP Web\appCMV> ng g m tipoMantenimientos --routing
+PS D:\APP Web\appCMV> ng g m seguimientos --routing
+PS D:\APP Web\appCMV> ng g c agencias/pages/pageList
+PS D:\APP Web\appCMV> ng g c canales/pages/pageList
+PS D:\APP Web\appCMV> ng g c clientes/pages/pageList
+PS D:\APP Web\appCMV> ng g c mecanicos/pages/pageList
+PS D:\APP Web\appCMV> ng g c mantenimientos/pages/pageList
+PS D:\APP Web\appCMV> ng g c tipo-mantenimientos/pages/pageList
+PS D:\APP Web\appCMV> ng g c seguimientos/pages/pageList
+PS D:\APP Web\appCMV> ng g m core
+PS D:\APP Web\appCMV> ng g c core/pages/pageLogin
+PS D:\APP Web\appCMV> ng g c core/components/login
+PS D:\APP Web\appCMV> npm i -s @angular/flex-layout @angular/cdk
+
+agregar en el archivo core>core.module.ts
+
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+@NgModule({
+  declarations: [
+    PageLoginComponent,
+    LoginComponent
+  ],
+  imports: [
+    CommonModule,
+    FlexLayoutModule,
+    MatFormFieldModule
+  ],
+  exports: [
+    PageLoginComponent
+  ]
+})
+export class CoreModule { }
+
+agregar en el archivo app>app.module.ts
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    CoreModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+importación de CoreModule
+import { CoreModule } from './core/core.module';
+
+en app.component.html
+
+<div>
+  <cmv-page-login></cmv-page-login>
+</div>
+
+------------------
+
+PS D:\APP Web\appCMV> ng add @angular/material
+PS D:\APP Web\appCMV> ng g c core/components/header
+PS D:\APP Web\appCMV> ng gc core/components/menu
